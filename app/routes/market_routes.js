@@ -9,7 +9,7 @@ module.exports = function(app, db) {
     res.send('Hello welcome to online super market')
   });
 */
-  app.get('/onlinefood/:id', (req, res) => {
+  app.get('/webmarket/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
     db.collection('supermarket').findOne(details, (err, item) => {
@@ -21,7 +21,7 @@ module.exports = function(app, db) {
     });
   });
 
-  app.put('/onlinefood/:id', (req, res) => {
+  app.put('/webmarket/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
     const note = { text: req.body.body, title: req.body.title };
@@ -34,7 +34,7 @@ module.exports = function(app, db) {
     });
   });
 
-  app.delete('/onlinefood/:id', (req, res) => {
+  app.delete('/webmarket/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
     db.collection('supermarket').remove(details, (err, item) => {
@@ -48,7 +48,7 @@ module.exports = function(app, db) {
 
 
 
-  app.post('/onlinefood', (req, res) => {
+  app.post('/webmarket', (req, res) => {
     const note = { text: req.body.body, title: req.body.title };
     db.collection('supermarket').insert(note, (err, result) => {
       if (err) { 
